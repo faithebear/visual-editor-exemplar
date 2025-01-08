@@ -1,0 +1,43 @@
+WITH orders AS (
+  SELECT
+    ORDER_ID,
+    LOCATION_ID,
+    CUSTOMER_ID,
+    SUBTOTAL_CENTS,
+    TAX_PAID_CENTS,
+    ORDER_TOTAL_CENTS,
+    SUBTOTAL,
+    TAX_PAID,
+    ORDER_TOTAL,
+    ORDERED_AT,
+    ORDER_COST,
+    ORDER_ITEMS_SUBTOTAL,
+    COUNT_FOOD_ITEMS,
+    COUNT_DRINK_ITEMS,
+    COUNT_ORDER_ITEMS,
+    IS_FOOD_ORDER,
+    IS_DRINK_ORDER,
+    CUSTOMER_ORDER_NUMBER
+  FROM {{ ref('orders') }}
+), customers AS (
+  SELECT
+    CUSTOMER_ID AS customer_number,
+    CUSTOMER_NAME,
+    COUNT_LIFETIME_ORDERS,
+    FIRST_ORDERED_AT,
+    LAST_ORDERED_AT,
+    LIFETIME_SPEND_PRETAX,
+    LIFETIME_TAX_PAID,
+    LIFETIME_SPEND,
+    CUSTOMER_TYPE
+  FROM {{ ref('customers') }}
+), join_1 AS (
+  SELECT
+    *
+  FROM customers
+  JOIN orders
+    ON customers.CUSTOMER_ID = orders.CUSTOMER_ID
+)
+SELECT
+  *
+FROM join_1
