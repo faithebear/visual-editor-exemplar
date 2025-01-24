@@ -1,27 +1,27 @@
 WITH stg_orders AS (
   SELECT
-    order_id,
-    location_id,
-    customer_id,
-    subtotal_cents,
-    tax_paid_cents,
-    order_total_cents,
-    subtotal,
-    tax_paid,
-    order_total,
-    ordered_at
+    "order_id" AS ORDER_ID,
+    "location_id" AS LOCATION_ID,
+    "customer_id" AS CUSTOMER_ID,
+    "subtotal_cents" AS SUBTOTAL_CENTS,
+    "tax_paid_cents" AS TAX_PAID_CENTS,
+    "order_total_cents" AS ORDER_TOTAL_CENTS,
+    "subtotal" AS SUBTOTAL,
+    "tax_paid" AS TAX_PAID,
+    "order_total" AS ORDER_TOTAL,
+    "ordered_at" AS ORDERED_AT
   FROM {{ ref('stg_orders') }}
 ), order_items AS (
   SELECT
-    order_item_id,
-    order_id,
-    product_id,
-    ordered_at,
-    product_name,
-    product_price,
-    is_food_item,
-    is_drink_item,
-    supply_cost
+    "order_item_id" AS ORDER_ITEM_ID,
+    "order_id" AS ORDER_ID,
+    "product_id" AS PRODUCT_ID,
+    "ordered_at" AS ORDERED_AT,
+    "product_name" AS PRODUCT_NAME,
+    "product_price" AS PRODUCT_PRICE,
+    "is_food_item" AS IS_FOOD_ITEM,
+    "is_drink_item" AS IS_DRINK_ITEM,
+    "supply_cost" AS SUPPLY_COST
   FROM {{ ref('order_items') }}
 ), formula_1 AS (
   SELECT
@@ -58,13 +58,7 @@ WITH stg_orders AS (
     *,
     ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY ordered_at ASC) AS customer_order_number
   FROM formula_2
-), order_1 AS (
-  SELECT
-    *
-  FROM formula_3
-  ORDER BY
-    ordered_at ASC
 )
 SELECT
   *
-FROM order_1
+FROM formula_3
