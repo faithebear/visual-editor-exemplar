@@ -1,11 +1,11 @@
-WITH customers AS (
+WITH input_model_1 AS (
   SELECT
     *
   FROM {{ ref('customers') }}
 ), aggregation_1 AS (
   SELECT
-    COUNT(DISTINCT CUSTOMER_ID) AS countd_CUSTOMER_ID
-  FROM customers
+    COUNT(CUSTOMER_ID) AS count_CUSTOMER_ID
+  FROM input_model_1
 ), untitled_sql AS (
   SELECT
     *
