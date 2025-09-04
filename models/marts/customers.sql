@@ -30,7 +30,7 @@ orders as (
         count_order_items,
         is_food_order,
         is_drink_order,
-        customer_order_number
+        customer_order_number * 2
     from 
         {{ ref('orders') }}
 
