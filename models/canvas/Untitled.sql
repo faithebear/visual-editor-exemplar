@@ -8,7 +8,7 @@ WITH customers AS (
     *
   FROM customers
   WHERE
-    LIFETIME_SPEND_PRETAX > 30
+    LIFETIME_SPEND_PRETAX > 300
 ), untitled_sql AS (
   SELECT
     *
