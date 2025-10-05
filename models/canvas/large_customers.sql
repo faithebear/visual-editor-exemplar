@@ -3,23 +3,12 @@ WITH customers AS (
   SELECT
     *
   FROM {{ ref('jaffle_shop', 'customers') }}
-), orders AS (
-  /* Order overview data mart, offering key details for each order inlcluding if it's a customer's first order and a food vs. drink item breakdown. One row per order. */
-  SELECT
-    *
-  FROM {{ ref('jaffle_shop', 'orders') }}
-), "join" AS (
-  SELECT
-    *
-  FROM orders
-  JOIN customers
-    USING (CUSTOMER_ID)
 ), filter_1 AS (
   SELECT
     *
-  FROM "join"
+  FROM customers
   WHERE
-    ORDER_TOTAL > 100
+    LIFETIME_SPEND_PRETAX > 10
 ), large_customers_sql AS (
   SELECT
     *
