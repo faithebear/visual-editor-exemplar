@@ -8,7 +8,7 @@ WITH customers AS (
     *
   FROM customers
   WHERE
-    LIFETIME_SPEND_PRETAX > 10
+    LIFETIME_SPEND_PRETAX > 15
 ), large_customers_sql AS (
   SELECT
     *
