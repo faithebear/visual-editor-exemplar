@@ -1,17 +1,18 @@
-WITH raw_supplies AS (
-  /* One record per supply per SKU of items sold in stores */
+WITH customers AS (
+  /* Customer overview data mart, offering key details for each unique customer. One row per customer. */
   SELECT
     *
-  FROM {{ source('ecom', 'raw_supplies') }}
-), rename_columns AS (
+  FROM {{ ref('jaffle_shop', 'customers') }}
+), filter AS (
   SELECT
     *
-    RENAME (ID AS supply_id, NAME AS supply_name, COST AS supply_cost_usd, PERISHABLE AS is_perishable, SKU AS product_id)
-  FROM raw_supplies
+  FROM customers
+  WHERE
+    LIFETIME_SPEND > 100
 ), stg_supplies_demo_sql AS (
   SELECT
     *
-  FROM rename_columns
+  FROM filter
 )
 SELECT
   *
