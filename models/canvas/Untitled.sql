@@ -1,18 +1,11 @@
-WITH customers AS (
-  /* Customer overview data mart, offering key details for each unique customer. One row per customer. */
+WITH staging_orders AS (
   SELECT
     *
-  FROM {{ ref('jaffle_shop', 'customers') }}
-), filter AS (
-  SELECT
-    *
-  FROM customers
-  WHERE
-    LIFETIME_SPEND_PRETAX > 30
+  FROM {{ ref('staging_orders') }}
 ), untitled_sql AS (
   SELECT
     *
-  FROM filter
+  FROM staging_orders
 )
 SELECT
   *
