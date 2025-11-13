@@ -1,0 +1,21 @@
+version: 2
+sources:
+- name: uploads
+  database: CANVAS
+  schema: DBT_DOPOKU
+  tables:
+  - name: sjg68olrdxx7_customer_web_activity_csv
+    columns:
+    - name: CUSTOMER_ID
+      data_type: NUMBER
+    - name: WEB_SESSION_LENGTH
+      data_type: FLOAT
+    - name: SESSION_DATE
+      data_type: DATE
+    - name: COUNT_PAGES_VISITED
+      data_type: NUMBER
+    - name: DEVICE_TYPE
+      data_type: TEXT
+    - name: REFERRER_SOURCE
+      data_type: TEXT
+    identifier: VE_UPLOADS__DA401282928260A3C9EF82D95D6807EF
