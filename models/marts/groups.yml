@@ -3,4 +3,6 @@ groups:
     owner:
       name: Faith
       email: faith.lierheimer@dbtlabs.com
-      position: Model Notifications Enjoyer
+    config:
+      meta:
+        position: Model Notifications Enjoyer
