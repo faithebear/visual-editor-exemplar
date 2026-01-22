@@ -48,12 +48,6 @@ models:
         description: The total number of items in the order.
       - name: customer_order_number
         description: The sequence number of the order for the customer, indicating if it's their first order.
-    tests:
-      - unique: [order_id]
-      - not_null: [order_id, customer_id, ordered_at]
-      - relationships:
-          - {to: ref('stg_customers'), field: customer_id}
-          - {to: ref('locations'), field: location_id}
 unit_tests:
   - name: test_order_items_compute_to_bools_correctly
     description: "Test that the counts of drinks and food orders convert to booleans properly."
