@@ -24,8 +24,6 @@ models:
         description: A boolean indicating if this order included any food items.
       - name: is_drink_order
         description: A boolean indicating if this order included any drink items.
-
-<<<<<<< HEAD
       - name: location_id
         description: The identifier for the location where the order was placed.
       - name: subtotal_cents
@@ -56,7 +54,6 @@ models:
       - relationships:
           - {to: ref('stg_customers'), field: customer_id}
           - {to: ref('locations'), field: location_id}
-=======
 unit_tests:
   - name: test_order_items_compute_to_bools_correctly
     description: "Test that the counts of drinks and food orders convert to booleans properly."
