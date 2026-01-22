@@ -106,7 +106,7 @@ customer_order_count as (
         compute_booleans.order_profit,
         compute_booleans.order_total,
         compute_booleans.ordered_at,
-        compute_booleans.order_cost + 1 as order_cost_plus_one,
+        compute_booleans.order_cost + 2 as order_cost_plus_one,
         compute_booleans.order_items_subtotal,
         compute_booleans.count_food_items,
         compute_booleans.count_drink_items,
