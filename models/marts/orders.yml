@@ -24,7 +24,30 @@ models:
         description: A boolean indicating if this order included any food items.
       - name: is_drink_order
         description: A boolean indicating if this order included any drink items.
-
+      - name: location_id
+        description: The identifier for the location where the order was placed.
+      - name: subtotal_cents
+        description: The subtotal of the order in cents before tax.
+      - name: tax_paid_cents
+        description: The amount of tax paid for the order in cents.
+      - name: order_total_cents
+        description: The total amount of the order in cents including tax.
+      - name: subtotal
+        description: The subtotal of the order in USD before tax.
+      - name: tax_paid
+        description: The amount of tax paid for the order in USD.
+      - name: order_profit
+        description: The profit from the order calculated as subtotal minus tax paid.
+      - name: order_items_subtotal
+        description: The total price of all items in the order.
+      - name: count_food_items
+        description: The number of food items in the order.
+      - name: count_drink_items
+        description: The number of drink items in the order.
+      - name: count_order_items
+        description: The total number of items in the order.
+      - name: customer_order_number
+        description: The sequence number of the order for the customer, indicating if it's their first order.
 unit_tests:
   - name: test_order_items_compute_to_bools_correctly
     description: "Test that the counts of drinks and food orders convert to booleans properly."

@@ -23,7 +23,6 @@ orders as (
         tax_paid,
         order_total,
         ordered_at,
-        order_cost,
         order_items_subtotal,
         count_food_items,
         count_drink_items,
