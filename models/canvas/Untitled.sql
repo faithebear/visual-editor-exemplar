@@ -1,18 +1,11 @@
-WITH customers AS (
-  /* Customer overview data mart, offering key details for each unique customer. One row per customer. */
+WITH input AS (
   SELECT
     *
-  FROM {{ ref('jaffle_shop', 'customers') }}
-), filter AS (
-  SELECT
-    *
-  FROM customers
-  WHERE
-    LIFETIME_SPEND_PRETAX > 30
+  FROM {{ ref('jaffle_shop', 'orders') }}
 ), untitled_sql AS (
   SELECT
     *
-  FROM filter
+  FROM input
 )
 SELECT
   *
